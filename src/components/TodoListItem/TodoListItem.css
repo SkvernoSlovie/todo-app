@@ -1,0 +1,12 @@
+.item-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+}
+.li-text {
+  color: red;
+}
+/* .done {
+  text-decoration: line-through;
+} */
