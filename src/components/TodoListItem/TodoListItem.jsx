@@ -3,10 +3,13 @@ import { Typography, IconButton, makeStyles } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
 
-import './TodoListItem.css';
-import { FlareSharp } from '@material-ui/icons';
-
 const useStyles = makeStyles((theme) => ({
+  itemLi: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    border: '1px solid #c4c4c4',
+  },
   liText: {
     marginLeft: 10,
   },
@@ -36,7 +39,7 @@ function TodoListItem({
     classNames += ` ${classes.important}`;
   }
   return (
-    <li className="item-li">
+    <li className={classes.itemLi}>
       <div onClick={onToggleDone}>
         <Typography variant="h6" color="primary" className={classNames}>
           {label}

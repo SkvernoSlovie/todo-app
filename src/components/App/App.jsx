@@ -1,11 +1,24 @@
 import React from 'react';
 import produce from 'immer';
+import { makeStyles } from '@material-ui/core';
 
 import TodoList from '../TodoList/TodoList';
 import AddItem from '../AddItem/AddItem';
-import './App.css';
+
+const useStyles = makeStyles(() => ({
+  wrapper: {
+    color: '#ffff',
+    fontFamily: 'Roboto, sans-serif',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+}));
 
 const App = () => {
+  const classes = useStyles();
+
   const todoData = [
     { id: 1, label: 'Drink Coffee', important: false, done: false },
     { id: 2, label: 'Make Awesome App', important: true, done: true },
@@ -48,26 +61,6 @@ const App = () => {
     setStateData(toggleProp(id, 'done'));
   };
 
-  // const onSearchItem = (event) => {
-  //   if (event === '') {
-  //     setStateSearch(stateData);
-  //   } else {
-  //     setStateSearch(
-  //       produce(stateData, (draftState) => {
-  //         return draftState.filter((item) => item.label.includes(event));
-  //       }),
-  //     );
-  //   }
-  // };
-  // const onFilterItem = (index) => {
-  //   if (index === 0) {
-  //     setStateSearch(stateData);
-  //   } else if (index === 1) {
-  //     setStateSearch(stateData.filter((item) => !item.done));
-  //   } else {
-  //     setStateSearch(stateData.filter((item) => item.done));
-  //   }
-  // };
   const onSearchChange = (term) => {
     setStateTerm(term);
   };
@@ -96,7 +89,7 @@ const App = () => {
   const visibleItems = search(stateData, stateTerm);
   const filtredItems = filter(stateFilter, visibleItems);
   return (
-    <div className="wrapper">
+    <div className={classes.wrapper}>
       <TodoList
         todoData={filtredItems}
         onDeleted={onDeleted}

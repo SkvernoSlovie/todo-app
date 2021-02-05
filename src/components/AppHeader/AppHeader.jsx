@@ -4,9 +4,17 @@ import { Typography, makeStyles } from '@material-ui/core';
 import SearchPanel from '../SearchPanel/SearchPanel';
 import ItemStatusFilter from '../ItemStatusFilter/ItemStatusFilter';
 
-import './AppHeader.css';
 
 const useStyles = makeStyles((theme) => ({
+  appHeader: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+
+    backgroundColor: '#3f51b5',
+    borderRadius: '7px 7px 0 0',
+    width: '100%',
+  },
   headerTitle: {
     display: 'flex',
     justifyContent: 'space-around',
@@ -27,7 +35,7 @@ const AppHeader = ({ countDoneItems, todoItems, onSearchChange, onFilter }) => {
   const classes = useStyles();
 
   return (
-    <div className="app-header">
+    <div className={classes.appHeader}>
       <div className={classes.headerTitle}>
         <Typography variant="h5" color="inherit">
           TODO LIST
